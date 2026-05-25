@@ -1,0 +1,16 @@
+[gd_resource type="Environment" format=3 uid="uid://djefv5ucsotbo"]
+
+[ext_resource type="Texture2D" uid="uid://daefygang12ku" path="res://mira/graphics/materials/skybox_opaque.png" id="1_sky_tex"]
+
+[sub_resource type="PanoramaSkyMaterial" id="1_pano_mat"]
+panorama = ExtResource("1_sky_tex")
+
+[sub_resource type="Sky" id="1_sky"]
+sky_material = SubResource("1_pano_mat")
+
+[resource]
+background_mode = 2
+background_energy_multiplier = 2.0
+sky = SubResource("1_sky")
+ambient_light_source = 1
+ambient_light_energy = 1.2

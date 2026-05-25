@@ -1,0 +1,230 @@
+[gd_scene format=3 uid="uid://bkmv5yyrbhj48"]
+
+[ext_resource type="Script" uid="uid://bxjvi501gncsc" path="res://mira/scripts/scene_level_spec.gd" id="1_spec"]
+[ext_resource type="PackedScene" path="res://mira/graphics/modules/PlatformModule.tscn" id="2_platform"]
+
+[sub_resource type="StandardMaterial3D" id="1_line_material"]
+transparency = 1
+albedo_color = Color(0.560784, 1, 0.819608, 0.9)
+roughness = 0.22
+emission_enabled = true
+emission = Color(0.937255, 1, 0.972549, 1)
+emission_energy_multiplier = 0.3
+
+[sub_resource type="BoxMesh" id="1_line_mesh"]
+
+[node name="LabThreeCourseLevel" type="Node3D" unique_id=334576031]
+script = ExtResource("1_spec")
+platform_support_towers = false
+
+[node name="SpawnPoint" type="Marker3D" parent="." unique_id=609335173]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.452529, 17.759861, 12)
+
+[node name="SourcePoint" type="Marker3D" parent="." unique_id=631271346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.0181413, 1.58, 12)
+
+[node name="TargetPoint" type="Marker3D" parent="." unique_id=1938255719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58, -108)
+
+[node name="WorldBounds" type="Node3D" parent="." unique_id=995139924]
+
+[node name="Min" type="Marker3D" parent="WorldBounds" unique_id=352644994]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -8, -132)
+
+[node name="Max" type="Marker3D" parent="WorldBounds" unique_id=1041346976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 16, 24)
+
+[node name="Platforms" type="Node3D" parent="." unique_id=1126098715]
+
+[node name="P00_Floor" parent="Platforms" unique_id=944247326 instance=ExtResource("2_platform")]
+transform = Transform3D(25, 0, 0, 0, 1, 0, 0, 0, 50, 0, 1, -48)
+module_size = Vector3(52, 0.5, 162)
+
+[node name="P05_L_A3" parent="Platforms" unique_id=1078375657 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.2, 1.45, -15.5)
+module_size = Vector3(4.4, 0.35, 6.6)
+
+[node name="P06_L_A4" parent="Platforms" unique_id=1539346350 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6, 1.95, -28)
+module_size = Vector3(4.2, 0.35, 7)
+
+[node name="P07_L_A5" parent="Platforms" unique_id=2081530971 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4, 2.5, -41.5)
+module_size = Vector3(4, 0.35, 7.4)
+
+[node name="P08_L_A6" parent="Platforms" unique_id=1255804407 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4, 3.1, -56)
+module_size = Vector3(4, 0.35, 7.2)
+
+[node name="P09_L_A7" parent="Platforms" unique_id=699724565 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2, 3.7, -71)
+module_size = Vector3(3.8, 0.35, 7.2)
+
+[node name="P10_L_A8" parent="Platforms" unique_id=407735283 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 4.3, -86)
+module_size = Vector3(4.2, 0.35, 7.4)
+
+[node name="P11_L_A9" parent="Platforms" unique_id=1446121770 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8, 4.9, -101)
+module_size = Vector3(4.8, 0.35, 7.8)
+
+[node name="P12_L_A10" parent="Platforms" unique_id=1407766707 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2, 5.4, -112)
+module_size = Vector3(5.2, 0.35, 6.8)
+
+[node name="P14_C_B2" parent="Platforms" unique_id=265496901 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1, 0)
+module_size = Vector3(1, 1, 1)
+
+[node name="P15_C_B3" parent="Platforms" unique_id=1017843345 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, -17)
+module_size = Vector3(5.2, 0.35, 7.4)
+
+[node name="P16_C_B4" parent="Platforms" unique_id=1247555929 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -30)
+module_size = Vector3(4.8, 0.35, 7.2)
+
+[node name="P17_C_B5" parent="Platforms" unique_id=200698034 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -44)
+module_size = Vector3(4.4, 0.35, 7)
+
+[node name="P18_C_B6" parent="Platforms" unique_id=886792428 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.9, -58.5)
+module_size = Vector3(4.2, 0.35, 6.8)
+
+[node name="P19_C_B7" parent="Platforms" unique_id=1098204333 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.7, -73.5)
+module_size = Vector3(4, 0.35, 6.8)
+
+[node name="P20_C_B8" parent="Platforms" unique_id=844944567 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.8, -89)
+module_size = Vector3(4.6, 0.35, 7.2)
+
+[node name="P21_C_B9" parent="Platforms" unique_id=627797873 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.8, -104.5)
+module_size = Vector3(5, 0.35, 7.8)
+
+[node name="P22_C_B10" parent="Platforms" unique_id=2017364656 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.4, -114)
+module_size = Vector3(5.4, 0.35, 6.8)
+
+[node name="P23_R_C1" parent="Platforms" unique_id=1681600278 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8, 0.5, 6.5)
+module_size = Vector3(6.8, 0.35, 8)
+
+[node name="P24_R_C2" parent="Platforms" unique_id=153965055 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4, 0.95, -6.5)
+module_size = Vector3(6, 0.35, 7.6)
+
+[node name="P25_R_C3" parent="Platforms" unique_id=1316742297 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1.5, -21)
+module_size = Vector3(5.4, 0.35, 7.2)
+
+[node name="P26_R_C4" parent="Platforms" unique_id=935518076 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2.2, -37)
+module_size = Vector3(5, 0.35, 7)
+
+[node name="P27_R_C5" parent="Platforms" unique_id=304980536 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.6, 3, -54)
+module_size = Vector3(4.8, 0.35, 7)
+
+[node name="P28_R_C6" parent="Platforms" unique_id=344398299 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6, 3.9, -72)
+module_size = Vector3(4.6, 0.35, 6.8)
+
+[node name="P29_R_C7" parent="Platforms" unique_id=589882202 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4, 4.7, -90.5)
+module_size = Vector3(4.6, 0.35, 6.8)
+
+[node name="P30_R_C8" parent="Platforms" unique_id=497149302 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2, 5.5, -109)
+module_size = Vector3(5, 0.35, 7.2)
+
+[node name="P31_R_C9" parent="Platforms" unique_id=796666123 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2, 5.9, -118)
+module_size = Vector3(5.8, 0.35, 6.2)
+
+[node name="Absorbers" type="Node3D" parent="." unique_id=1271588896]
+
+[node name="A_Wall_Left" parent="Absorbers" unique_id=1662459210 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8, 3.8, -54)
+module_size = Vector3(1.6, 7.5, 157)
+
+[node name="A_Wall_Right" parent="Absorbers" unique_id=172753360 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.8, 3.8, -54)
+module_size = Vector3(1.6, 7.5, 157)
+
+[node name="A_Wall_Front" parent="Absorbers" unique_id=1784022368 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.8, -132.8)
+module_size = Vector3(49.6, 7.5, 1.6)
+
+[node name="EnvironmentShapes" type="Node3D" parent="." unique_id=1092075815]
+
+[node name="Geometry" type="Node3D" parent="EnvironmentShapes" unique_id=208181234]
+
+[node name="SupportC_B6" parent="EnvironmentShapes/Geometry" unique_id=1979510180 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65, -58.5)
+module_size = Vector3(2.2, 5.3, 2.8)
+
+[node name="SupportR_C7" parent="EnvironmentShapes/Geometry" unique_id=1859987981 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4, 1.95, -90.5)
+module_size = Vector3(2.2, 5.9, 2.6)
+
+[node name="Backdrop" type="Node3D" parent="EnvironmentShapes" unique_id=373717291]
+
+[node name="TowerRightA" parent="EnvironmentShapes/Backdrop" unique_id=503860927 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8, 6.8, -8)
+module_size = Vector3(5, 15.2, 4.6)
+
+[node name="TowerLeftB" parent="EnvironmentShapes/Backdrop" unique_id=953238846 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8, 7.4, -52)
+module_size = Vector3(5.6, 17.4, 5.2)
+
+[node name="TowerRightB" parent="EnvironmentShapes/Backdrop" unique_id=433918491 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8, 8.2, -62)
+module_size = Vector3(5.8, 18.8, 5)
+
+[node name="TowerLeftC" parent="EnvironmentShapes/Backdrop" unique_id=1296409126 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8, 8.6, -102)
+module_size = Vector3(6.2, 20, 5.4)
+
+[node name="TowerRightC" parent="EnvironmentShapes/Backdrop" unique_id=163396796 instance=ExtResource("2_platform")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8, 9.4, -112)
+module_size = Vector3(6.4, 21.5, 5.4)
+
+[node name="PreviewSun" type="DirectionalLight3D" parent="EnvironmentShapes/Backdrop" unique_id=1147201961]
+transform = Transform3D(0.866025, 0, 0.5, -0.321394, 0.766044, 0.55667, -0.383022, -0.642788, 0.663414, 0, 14, -48)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="PreviewFill" type="OmniLight3D" parent="EnvironmentShapes/Backdrop" unique_id=915098057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 8, 8)
+light_color = Color(0.290196, 0.262745, 0.376471, 1)
+light_energy = 0.9
+omni_range = 64.0
+
+[node name="Guide" type="Node3D" parent="EnvironmentShapes" unique_id=1126809496]
+
+[node name="LaneLeft" type="MeshInstance3D" parent="EnvironmentShapes/Guide" unique_id=189637590]
+transform = Transform3D(0.1, 0, 0, 0, 0.03, 0, 0, 0, 132, -11.2, 0.09, -55.2)
+material_override = SubResource("1_line_material")
+mesh = SubResource("1_line_mesh")
+
+[node name="LaneRight" type="MeshInstance3D" parent="EnvironmentShapes/Guide" unique_id=797937287]
+transform = Transform3D(0.1, 0, 0, 0, 0.03, 0, 0, 0, 132, 11.2, 0.09, -55.2)
+material_override = SubResource("1_line_material")
+mesh = SubResource("1_line_mesh")
+
+[node name="SourceVisuals" type="Node3D" parent="EnvironmentShapes" unique_id=639505449]
+
+[node name="TargetVisuals" type="Node3D" parent="EnvironmentShapes" unique_id=245675079]
+
+[node name="FarBeacon" type="OmniLight3D" parent="EnvironmentShapes/TargetVisuals" unique_id=267217951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.58, -108)
+light_color = Color(0.937255, 1, 0.972549, 1)
+light_energy = 2.35
+omni_range = 64.0
+
+[node name="PreviewCamera" type="Camera3D" parent="." unique_id=1498328098]
+transform = Transform3D(0.9998478, -1.1175871e-08, -0.017452419, -0.0029839382, 0.89681894, 0.44856548, 0.017180944, -0.42988914, 0.89992803, 0, 9.5, 22)
+current = true

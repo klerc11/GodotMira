@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Material" path="res://mira/graphics/materials/M_NeonCyan.tres" id="1_cyan"]
+
+[sub_resource type="SphereMesh" id="1_trail_mesh"]
+radius = 0.065
+height = 0.13
+
+[node name="FX_PulseTrail" type="MeshInstance3D"]
+mesh = SubResource("1_trail_mesh")
+material_override = ExtResource("1_cyan")

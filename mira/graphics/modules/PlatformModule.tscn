@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://mira/scripts/graphics/platform_module.gd" id="1_script"]
+
+[sub_resource type="BoxShape3D" id="1_shape"]
+size = Vector3(4, 0.6, 4)
+
+[sub_resource type="BoxMesh" id="1_base_mesh"]
+size = Vector3(4, 0.6, 4)
+
+[sub_resource type="BoxMesh" id="2_trim_mesh"]
+size = Vector3(3.76, 0.1, 3.76)
+
+[node name="PlatformModule" type="Node3D"]
+script = ExtResource("1_script")
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+shape = SubResource("1_shape")
+
+[node name="BaseMesh" type="MeshInstance3D" parent="Body"]
+mesh = SubResource("1_base_mesh")
+
+[node name="TrimMesh" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, 0.25, 0)
+mesh = SubResource("2_trim_mesh")

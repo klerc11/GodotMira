@@ -1,0 +1,219 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://mira/scripts/scene_level_spec.gd" id="1_spec"]
+[ext_resource type="PackedScene" path="res://mira/graphics/modules/PlatformModule.tscn" id="2_platform"]
+
+[sub_resource type="StandardMaterial3D" id="1_guide_material"]
+transparency = 1
+albedo_color = Color(0.560784, 1, 0.819608, 0.84)
+roughness = 0.22
+emission_enabled = true
+emission = Color(0.937255, 1, 0.972549, 1)
+emission_energy_multiplier = 0.26
+
+[sub_resource type="BoxMesh" id="1_guide_mesh"]
+
+[sub_resource type="StandardMaterial3D" id="2_spawn_material"]
+albedo_color = Color(0.937255, 1, 0.972549, 0.96)
+roughness = 0.2
+emission_enabled = true
+emission = Color(0.560784, 1, 0.819608, 1)
+emission_energy_multiplier = 0.6
+
+[sub_resource type="CylinderMesh" id="2_spawn_mesh"]
+top_radius = 0.32
+bottom_radius = 0.32
+height = 0.08
+
+[node name="AuthoringTemplateLevel" type="Node3D"]
+script = ExtResource("1_spec")
+fire_zone_radius = 2.4
+fire_zone_size = Vector2(72, 12)
+platform_support_towers = false
+env_preset = "clear"
+fog_near = 34.0
+fog_far = 132.0
+include_scene_environment_shapes = true
+build_runtime_world_boundaries = false
+build_runtime_backdrop = false
+build_runtime_level_art = false
+build_runtime_source_zone_visuals = false
+build_runtime_target_zone_visuals = false
+build_runtime_global_lighting = false
+
+[node name="SpawnPoint" type="Marker3D" parent="."]
+position = Vector3(-22, 1.2, 22)
+
+[node name="SpawnPreview" type="MeshInstance3D" parent="SpawnPoint"]
+position = Vector3(0, -0.72, 0)
+material_override = SubResource("2_spawn_material")
+mesh = SubResource("2_spawn_mesh")
+
+[node name="SourcePoint" type="Marker3D" parent="."]
+position = Vector3(-22, 1.58, 22)
+
+[node name="TargetPoint" type="Marker3D" parent="."]
+position = Vector3(24, 1.58, -22)
+
+[node name="WorldBounds" type="Node3D" parent="."]
+
+[node name="Min" type="Marker3D" parent="WorldBounds"]
+position = Vector3(-48, -8, -48)
+
+[node name="Max" type="Marker3D" parent="WorldBounds"]
+position = Vector3(48, 24, 48)
+
+[node name="Platforms" type="Node3D" parent="."]
+
+[node name="P00_Floor" parent="Platforms" instance=ExtResource("2_platform")]
+position = Vector3(0, -1.25, 0)
+module_size = Vector3(96, 0.5, 96)
+
+[node name="P01_StartDeck" parent="Platforms" instance=ExtResource("2_platform")]
+position = Vector3(-22, 0, 22)
+module_size = Vector3(18, 0.5, 10)
+
+[node name="P02_MidDeck" parent="Platforms" instance=ExtResource("2_platform")]
+position = Vector3(-8, 1.2, 10)
+module_size = Vector3(10, 0.4, 8)
+
+[node name="P03_EndDeck" parent="Platforms" instance=ExtResource("2_platform")]
+position = Vector3(8, 2.1, -2)
+module_size = Vector3(12, 0.4, 10)
+
+[node name="P04_ReturnDeck" parent="Platforms" instance=ExtResource("2_platform")]
+position = Vector3(24, 3, -22)
+module_size = Vector3(10, 0.4, 8)
+
+[node name="P05_KitPadA" parent="Platforms" instance=ExtResource("2_platform")]
+position = Vector3(30, 0, 30)
+module_size = Vector3(12, 0.4, 12)
+
+[node name="P06_KitPadB" parent="Platforms" instance=ExtResource("2_platform")]
+position = Vector3(30, 0, 14)
+module_size = Vector3(12, 0.4, 12)
+
+[node name="Absorbers" type="Node3D" parent="."]
+
+[node name="A_LeftWall" parent="Absorbers" instance=ExtResource("2_platform")]
+position = Vector3(-48.8, 3.8, 0)
+module_size = Vector3(1.6, 7.5, 100)
+
+[node name="A_RightWall" parent="Absorbers" instance=ExtResource("2_platform")]
+position = Vector3(48.8, 3.8, 0)
+module_size = Vector3(1.6, 7.5, 100)
+
+[node name="A_FrontWall" parent="Absorbers" instance=ExtResource("2_platform")]
+position = Vector3(0, 3.8, -48.8)
+module_size = Vector3(97.6, 7.5, 1.6)
+
+[node name="A_BackWall" parent="Absorbers" instance=ExtResource("2_platform")]
+position = Vector3(0, 3.8, 48.8)
+module_size = Vector3(97.6, 7.5, 1.6)
+
+[node name="EnvironmentShapes" type="Node3D" parent="."]
+
+[node name="Geometry" type="Node3D" parent="EnvironmentShapes"]
+
+[node name="G_TowerA" parent="EnvironmentShapes/Geometry" instance=ExtResource("2_platform")]
+position = Vector3(-34, 7.4, -10)
+module_size = Vector3(6.4, 16.8, 6.4)
+
+[node name="G_TowerB" parent="EnvironmentShapes/Geometry" instance=ExtResource("2_platform")]
+position = Vector3(34, 8.8, 18)
+module_size = Vector3(7.2, 19.4, 7.2)
+
+[node name="G_KitTower" parent="EnvironmentShapes/Geometry" instance=ExtResource("2_platform")]
+position = Vector3(30, 3.4, 22)
+module_size = Vector3(4, 7, 4)
+
+[node name="Backdrop" type="Node3D" parent="EnvironmentShapes"]
+
+[node name="B_BlockLeft" parent="EnvironmentShapes/Backdrop" instance=ExtResource("2_platform")]
+position = Vector3(-40, 10, -36)
+module_size = Vector3(8, 22, 8)
+
+[node name="B_BlockRight" parent="EnvironmentShapes/Backdrop" instance=ExtResource("2_platform")]
+position = Vector3(40, 11, 36)
+module_size = Vector3(8, 24, 8)
+
+[node name="PreviewSun" type="DirectionalLight3D" parent="EnvironmentShapes/Backdrop"]
+rotation_degrees = Vector3(-44, 28, 0)
+light_energy = 1.18
+shadow_enabled = true
+
+[node name="PreviewFill" type="OmniLight3D" parent="EnvironmentShapes/Backdrop"]
+position = Vector3(-18, 10, 20)
+light_color = Color(0.290196, 0.262745, 0.376471, 1)
+light_energy = 1.0
+omni_range = 84.0
+
+[node name="Guide" type="Node3D" parent="EnvironmentShapes"]
+
+[node name="LaneLeft" type="MeshInstance3D" parent="EnvironmentShapes/Guide"]
+position = Vector3(-16, 0.09, 0)
+scale = Vector3(0.1, 0.03, 70)
+material_override = SubResource("1_guide_material")
+mesh = SubResource("1_guide_mesh")
+
+[node name="LaneCenter" type="MeshInstance3D" parent="EnvironmentShapes/Guide"]
+position = Vector3(0, 0.09, 0)
+scale = Vector3(0.1, 0.03, 70)
+material_override = SubResource("1_guide_material")
+mesh = SubResource("1_guide_mesh")
+
+[node name="LaneRight" type="MeshInstance3D" parent="EnvironmentShapes/Guide"]
+position = Vector3(16, 0.09, 0)
+scale = Vector3(0.1, 0.03, 70)
+material_override = SubResource("1_guide_material")
+mesh = SubResource("1_guide_mesh")
+
+[node name="SourceVisuals" type="Node3D" parent="EnvironmentShapes"]
+
+[node name="TargetVisuals" type="Node3D" parent="EnvironmentShapes"]
+
+[node name="TargetBeacon" type="OmniLight3D" parent="EnvironmentShapes/TargetVisuals"]
+position = Vector3(24, 7.58, -22)
+light_color = Color(0.937255, 1, 0.972549, 1)
+light_energy = 2.35
+omni_range = 68.0
+
+[node name="AuthoringHelpers" type="Node3D" parent="."]
+
+[node name="ReflectorSlots" type="Node3D" parent="AuthoringHelpers"]
+
+[node name="R1" type="Marker3D" parent="AuthoringHelpers/ReflectorSlots"]
+position = Vector3(-12, 1.58, 14)
+
+[node name="R2" type="Marker3D" parent="AuthoringHelpers/ReflectorSlots"]
+position = Vector3(2, 1.58, 2)
+
+[node name="R3" type="Marker3D" parent="AuthoringHelpers/ReflectorSlots"]
+position = Vector3(16, 1.58, -14)
+
+[node name="BrokenMirrorSlots" type="Node3D" parent="AuthoringHelpers"]
+
+[node name="B1" type="Marker3D" parent="AuthoringHelpers/BrokenMirrorSlots"]
+position = Vector3(-18, 1.58, 8)
+
+[node name="B2" type="Marker3D" parent="AuthoringHelpers/BrokenMirrorSlots"]
+position = Vector3(8, 1.58, -6)
+
+[node name="B3" type="Marker3D" parent="AuthoringHelpers/BrokenMirrorSlots"]
+position = Vector3(22, 1.58, -20)
+
+[node name="PathMarkers" type="Node3D" parent="AuthoringHelpers"]
+
+[node name="P_Start" type="Marker3D" parent="AuthoringHelpers/PathMarkers"]
+position = Vector3(-22, 1.58, 22)
+
+[node name="P_Mid" type="Marker3D" parent="AuthoringHelpers/PathMarkers"]
+position = Vector3(0, 1.58, 0)
+
+[node name="P_End" type="Marker3D" parent="AuthoringHelpers/PathMarkers"]
+position = Vector3(24, 1.58, -22)
+
+[node name="PreviewCamera" type="Camera3D" parent="."]
+position = Vector3(-8, 24, 36)
+rotation_degrees = Vector3(-34, -18, 0)
+current = true

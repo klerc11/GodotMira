@@ -1,0 +1,18 @@
+[gd_resource type="Sky" format=3 uid="uid://b73bx2f3akryn"]
+
+[ext_resource type="Shader" uid="uid://bpgvi8mdqg5eo" path="res://mira/graphics/environments/MilkyWaySky.gdshader" id="1_shader"]
+
+[sub_resource type="ShaderMaterial" id="1_sky_material"]
+shader = ExtResource("1_shader")
+shader_parameter/top_color = Color(0.016, 0.018, 0.028, 1)
+shader_parameter/mid_color = Color(0.07, 0.08, 0.11, 1)
+shader_parameter/horizon_color = Color(0.1922, 0.1686, 0.2588, 1)
+shader_parameter/band_color = Color(0.2902, 0.2627, 0.3765, 1)
+shader_parameter/band_width = 0.24
+shader_parameter/band_strength = 0.52
+shader_parameter/star_density = 0.00055
+shader_parameter/star_scale = 760.0
+shader_parameter/star_brightness = 0.44
+
+[resource]
+sky_material = SubResource("1_sky_material")

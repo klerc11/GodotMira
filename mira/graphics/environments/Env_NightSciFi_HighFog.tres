@@ -1,0 +1,20 @@
+[gd_resource type="Environment" load_steps=2 format=3]
+
+[ext_resource type="Sky" path="res://mira/graphics/environments/Sky_MilkyWay.tres" id="1_sky"]
+
+[resource]
+background_mode = 2
+sky = ExtResource("1_sky")
+ambient_light_source = 2
+ambient_light_energy = 0.86
+fog_enabled = true
+fog_light_color = Color(0.2902, 0.2627, 0.3765, 1)
+fog_density = 0.0078
+volumetric_fog_enabled = false
+tonemap_mode = 3
+glow_enabled = true
+glow_bloom = 0.06
+glow_intensity = 0.24
+adjustment_enabled = true
+adjustment_contrast = 1.02
+adjustment_saturation = 0.9

@@ -1,0 +1,378 @@
+[gd_scene load_steps=32 format=3]
+
+[ext_resource type="Script" path="res://mira/scripts/golden_route_level.gd" id="1_level"]
+[ext_resource type="Script" path="res://mira/scripts/start_zone.gd" id="2_startzone"]
+[ext_resource type="Script" path="res://mira/scripts/pulse_source.gd" id="3_source"]
+[ext_resource type="Script" path="res://mira/scripts/level_reset_zone.gd" id="4_reset"]
+[ext_resource type="Script" path="res://mira/scripts/pulse_mirror.gd" id="5_mirror"]
+[ext_resource type="Script" path="res://mira/scripts/broken_mirror_marker.gd" id="6_broken"]
+[ext_resource type="Script" path="res://mira/scripts/pulse_receptor.gd" id="7_receptor"]
+[ext_resource type="Script" path="res://mira/scripts/pulse_lane.gd" id="8_lane"]
+[ext_resource type="Script" path="res://mira/scripts/pulse_reflect_panel.gd" id="9_panel"]
+
+[sub_resource type="StandardMaterial3D" id="1_platform_material"]
+albedo_color = Color(0.1, 0.13, 0.15, 1)
+roughness = 0.72
+
+[sub_resource type="StandardMaterial3D" id="2_pillar_material"]
+albedo_color = Color(0.16, 0.18, 0.2, 1)
+roughness = 0.62
+
+[sub_resource type="BoxShape3D" id="1_start_shape"]
+size = Vector3(12, 0.6, 10)
+
+[sub_resource type="BoxMesh" id="1_start_mesh"]
+size = Vector3(12, 0.6, 10)
+
+[sub_resource type="BoxShape3D" id="2_spine_shape"]
+size = Vector3(6, 0.6, 22)
+
+[sub_resource type="BoxMesh" id="2_spine_mesh"]
+size = Vector3(6, 0.6, 22)
+
+[sub_resource type="BoxShape3D" id="3_spur_shape"]
+size = Vector3(14, 0.6, 4)
+
+[sub_resource type="BoxMesh" id="3_spur_mesh"]
+size = Vector3(14, 0.6, 4)
+
+[sub_resource type="BoxShape3D" id="4_right_shape"]
+size = Vector3(4, 0.6, 14)
+
+[sub_resource type="BoxMesh" id="4_right_mesh"]
+size = Vector3(4, 0.6, 14)
+
+[sub_resource type="BoxShape3D" id="5_forward_shape"]
+size = Vector3(18, 0.6, 4)
+
+[sub_resource type="BoxMesh" id="5_forward_mesh"]
+size = Vector3(18, 0.6, 4)
+
+[sub_resource type="BoxShape3D" id="6_connector_shape"]
+size = Vector3(4, 0.6, 18)
+
+[sub_resource type="BoxMesh" id="6_connector_mesh"]
+size = Vector3(4, 0.6, 18)
+
+[sub_resource type="BoxShape3D" id="7_return_shape"]
+size = Vector3(8, 0.6, 6)
+
+[sub_resource type="BoxMesh" id="7_return_mesh"]
+size = Vector3(8, 0.6, 6)
+
+[sub_resource type="BoxShape3D" id="8_pillar_b_shape"]
+size = Vector3(2, 1.8, 2)
+
+[sub_resource type="BoxMesh" id="8_pillar_b_mesh"]
+size = Vector3(2, 1.8, 2)
+
+[sub_resource type="BoxShape3D" id="9_pillar_c_shape"]
+size = Vector3(2, 2.2, 2)
+
+[sub_resource type="BoxMesh" id="9_pillar_c_mesh"]
+size = Vector3(2, 2.2, 2)
+
+[sub_resource type="BoxShape3D" id="10_finish_shape"]
+size = Vector3(4, 1.6, 4)
+
+[sub_resource type="BoxMesh" id="10_finish_mesh"]
+size = Vector3(4, 1.6, 4)
+
+[sub_resource type="BoxShape3D" id="11_beam_shape"]
+size = Vector3(3.2, 0.4, 1.2)
+
+[sub_resource type="BoxMesh" id="11_beam_mesh"]
+size = Vector3(3.2, 0.4, 1.2)
+
+[node name="GoldenRouteLevel" type="Node3D"]
+script = ExtResource("1_level")
+start_zone_path = NodePath("StartZone")
+source_path = NodePath("Source")
+reset_zone_path = NodePath("ResetZone")
+spawn_point_path = NodePath("SpawnPoint")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-48, 35, 0)
+light_energy = 2.1
+shadow_enabled = true
+
+[node name="FillLight" type="OmniLight3D" parent="."]
+position = Vector3(-10, 7, 10)
+light_color = Color(0.24, 0.72, 1, 1)
+light_energy = 2.3
+omni_range = 34.0
+
+[node name="SpawnPoint" type="Marker3D" parent="."]
+position = Vector3(0, 1.1, 5.8)
+
+[node name="StartZone" type="Area3D" parent="."]
+position = Vector3(0, 0.02, 4.6)
+script = ExtResource("2_startzone")
+zone_radius = 2.9
+
+[node name="Source" type="Node3D" parent="."]
+position = Vector3(0, 0.05, 3.6)
+script = ExtResource("3_source")
+outgoing_lane_path = NodePath("../Lane_Source_MirrorA")
+
+[node name="ResetZone" type="Area3D" parent="."]
+position = Vector3(0, -7, -10)
+script = ExtResource("4_reset")
+box_size = Vector3(80, 8, 80)
+
+[node name="MirrorA" type="Node3D" parent="."]
+position = Vector3(0, 0.05, -8.5)
+script = ExtResource("5_mirror")
+outgoing_lane_path = NodePath("../Lane_MirrorA_BrokenA")
+
+[node name="BrokenA" type="Node3D" parent="."]
+position = Vector3(8.5, 0.05, -3.5)
+script = ExtResource("6_broken")
+outgoing_lane_path = NodePath("../Lane_BrokenA_MirrorB")
+
+[node name="MirrorB" type="Node3D" parent="."]
+position = Vector3(15, 1.55, -15.5)
+script = ExtResource("5_mirror")
+outgoing_lane_path = NodePath("../Lane_MirrorB_BrokenB")
+
+[node name="BrokenB" type="Node3D" parent="."]
+position = Vector3(3, 0.05, -24)
+script = ExtResource("6_broken")
+outgoing_lane_path = NodePath("../Lane_BrokenB_MirrorC")
+
+[node name="MirrorC" type="Node3D" parent="."]
+position = Vector3(-14, 1.95, -14.5)
+script = ExtResource("5_mirror")
+outgoing_lane_path = NodePath("../Lane_MirrorC_BrokenC")
+
+[node name="BrokenC" type="Node3D" parent="."]
+position = Vector3(-4.5, 0.05, -6.5)
+script = ExtResource("6_broken")
+outgoing_lane_path = NodePath("../Lane_BrokenC_Receptor")
+
+[node name="Receptor" type="Node3D" parent="."]
+position = Vector3(0, 1.35, -12.5)
+script = ExtResource("7_receptor")
+
+[node name="Lane_Source_MirrorA" type="Node3D" parent="."]
+script = ExtResource("8_lane")
+target_path = NodePath("../MirrorA")
+lane_color = Color(0.24, 0.84, 1, 1)
+
+[node name="P0" type="Marker3D" parent="Lane_Source_MirrorA"]
+position = Vector3(0, 0.55, 2.2)
+
+[node name="P1" type="Marker3D" parent="Lane_Source_MirrorA"]
+position = Vector3(0, 0.72, -3.4)
+
+[node name="P2" type="Marker3D" parent="Lane_Source_MirrorA"]
+position = Vector3(0, 0.78, -7.3)
+
+[node name="Lane_MirrorA_BrokenA" type="Node3D" parent="."]
+script = ExtResource("8_lane")
+target_path = NodePath("../BrokenA")
+lane_color = Color(0.44, 0.92, 1, 1)
+
+[node name="P0" type="Marker3D" parent="Lane_MirrorA_BrokenA"]
+position = Vector3(1.8, 0.85, -8.0)
+
+[node name="P1" type="Marker3D" parent="Lane_MirrorA_BrokenA"]
+position = Vector3(5.4, 0.78, -6.2)
+
+[node name="P2" type="Marker3D" parent="Lane_MirrorA_BrokenA"]
+position = Vector3(8.5, 0.62, -3.5)
+
+[node name="Lane_BrokenA_MirrorB" type="Node3D" parent="."]
+script = ExtResource("8_lane")
+target_path = NodePath("../MirrorB")
+lane_color = Color(0.62, 0.96, 1, 1)
+
+[node name="P0" type="Marker3D" parent="Lane_BrokenA_MirrorB"]
+position = Vector3(10.2, 0.72, -6.2)
+
+[node name="P1" type="Marker3D" parent="Lane_BrokenA_MirrorB"]
+position = Vector3(12.8, 1.4, -10.6)
+
+[node name="P2" type="Marker3D" parent="Lane_BrokenA_MirrorB"]
+position = Vector3(14.6, 1.92, -13.8)
+
+[node name="Lane_MirrorB_BrokenB" type="Node3D" parent="."]
+script = ExtResource("8_lane")
+target_path = NodePath("../BrokenB")
+lane_color = Color(0.88, 0.98, 1, 1)
+
+[node name="P0" type="Marker3D" parent="Lane_MirrorB_BrokenB"]
+position = Vector3(12.6, 1.92, -18.6)
+
+[node name="P1" type="Marker3D" parent="Lane_MirrorB_BrokenB"]
+position = Vector3(8.2, 1.1, -22.3)
+
+[node name="P2" type="Marker3D" parent="Lane_MirrorB_BrokenB"]
+position = Vector3(3.2, 0.62, -24.0)
+
+[node name="Lane_BrokenB_MirrorC" type="Node3D" parent="."]
+script = ExtResource("8_lane")
+target_path = NodePath("../MirrorC")
+lane_color = Color(1, 0.9, 0.72, 1)
+
+[node name="P0" type="Marker3D" parent="Lane_BrokenB_MirrorC"]
+position = Vector3(-2.0, 0.9, -22.4)
+
+[node name="P1" type="Marker3D" parent="Lane_BrokenB_MirrorC"]
+position = Vector3(-8.0, 1.5, -19.0)
+
+[node name="P2" type="Marker3D" parent="Lane_BrokenB_MirrorC"]
+position = Vector3(-13.2, 2.18, -15.5)
+
+[node name="Lane_MirrorC_BrokenC" type="Node3D" parent="."]
+script = ExtResource("8_lane")
+target_path = NodePath("../BrokenC")
+lane_color = Color(1, 0.74, 0.5, 1)
+
+[node name="P0" type="Marker3D" parent="Lane_MirrorC_BrokenC"]
+position = Vector3(-10.8, 1.85, -10.8)
+
+[node name="P1" type="Marker3D" parent="Lane_MirrorC_BrokenC"]
+position = Vector3(-7.1, 1.0, -7.6)
+
+[node name="P2" type="Marker3D" parent="Lane_MirrorC_BrokenC"]
+position = Vector3(-4.5, 0.62, -6.5)
+
+[node name="Lane_BrokenC_Receptor" type="Node3D" parent="."]
+script = ExtResource("8_lane")
+target_path = NodePath("../Receptor")
+lane_color = Color(1, 0.58, 0.34, 1)
+
+[node name="P0" type="Marker3D" parent="Lane_BrokenC_Receptor"]
+position = Vector3(-2.0, 0.92, -8.6)
+
+[node name="P1" type="Marker3D" parent="Lane_BrokenC_Receptor"]
+position = Vector3(0.0, 1.62, -10.8)
+
+[node name="P2" type="Marker3D" parent="Lane_BrokenC_Receptor"]
+position = Vector3(0.0, 1.52, -12.2)
+
+[node name="GuidePanelStart" type="StaticBody3D" parent="."]
+position = Vector3(-3.8, 1.4, 0.6)
+rotation_degrees = Vector3(0, 26, 0)
+script = ExtResource("9_panel")
+
+[node name="GuidePanelMid" type="StaticBody3D" parent="."]
+position = Vector3(6.4, 1.4, -10.8)
+rotation_degrees = Vector3(0, -28, 0)
+script = ExtResource("9_panel")
+
+[node name="GuidePanelFinish" type="StaticBody3D" parent="."]
+position = Vector3(-7.5, 1.4, -12.4)
+rotation_degrees = Vector3(0, 18, 0)
+script = ExtResource("9_panel")
+
+[node name="StartPlatform" type="StaticBody3D" parent="."]
+position = Vector3(0, -0.3, 4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StartPlatform"]
+shape = SubResource("1_start_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StartPlatform"]
+mesh = SubResource("1_start_mesh")
+material_override = SubResource("1_platform_material")
+
+[node name="MainSpine" type="StaticBody3D" parent="."]
+position = Vector3(0, -0.3, -10.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainSpine"]
+shape = SubResource("2_spine_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MainSpine"]
+mesh = SubResource("2_spine_mesh")
+material_override = SubResource("1_platform_material")
+
+[node name="RightSpur" type="StaticBody3D" parent="."]
+position = Vector3(7, -0.3, -4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightSpur"]
+shape = SubResource("3_spur_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RightSpur"]
+mesh = SubResource("3_spur_mesh")
+material_override = SubResource("1_platform_material")
+
+[node name="RightBridge" type="StaticBody3D" parent="."]
+position = Vector3(10, -0.3, -14)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightBridge"]
+shape = SubResource("4_right_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RightBridge"]
+mesh = SubResource("4_right_mesh")
+material_override = SubResource("1_platform_material")
+
+[node name="ForwardRunway" type="StaticBody3D" parent="."]
+position = Vector3(3, -0.3, -24)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ForwardRunway"]
+shape = SubResource("5_forward_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ForwardRunway"]
+mesh = SubResource("5_forward_mesh")
+material_override = SubResource("1_platform_material")
+
+[node name="CenterConnector" type="StaticBody3D" parent="."]
+position = Vector3(-2, -0.3, -15)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CenterConnector"]
+shape = SubResource("6_connector_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CenterConnector"]
+mesh = SubResource("6_connector_mesh")
+material_override = SubResource("1_platform_material")
+
+[node name="ReturnPad" type="StaticBody3D" parent="."]
+position = Vector3(-4, -0.3, -6.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ReturnPad"]
+shape = SubResource("7_return_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ReturnPad"]
+mesh = SubResource("7_return_mesh")
+material_override = SubResource("1_platform_material")
+
+[node name="MirrorBPillar" type="StaticBody3D" parent="."]
+position = Vector3(15, 0.6, -15.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MirrorBPillar"]
+shape = SubResource("8_pillar_b_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MirrorBPillar"]
+mesh = SubResource("8_pillar_b_mesh")
+material_override = SubResource("2_pillar_material")
+
+[node name="MirrorCPillar" type="StaticBody3D" parent="."]
+position = Vector3(-14, 0.8, -14.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MirrorCPillar"]
+shape = SubResource("9_pillar_c_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MirrorCPillar"]
+mesh = SubResource("9_pillar_c_mesh")
+material_override = SubResource("2_pillar_material")
+
+[node name="FinishPedestal" type="StaticBody3D" parent="."]
+position = Vector3(0, 0.5, -12.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FinishPedestal"]
+shape = SubResource("10_finish_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FinishPedestal"]
+mesh = SubResource("10_finish_mesh")
+material_override = SubResource("2_pillar_material")
+
+[node name="SlideCueBeam" type="StaticBody3D" parent="."]
+position = Vector3(-2, 0.9, -18.2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SlideCueBeam"]
+shape = SubResource("11_beam_shape")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SlideCueBeam"]
+mesh = SubResource("11_beam_mesh")
+material_override = SubResource("2_pillar_material")

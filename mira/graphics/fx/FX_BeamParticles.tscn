@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Material" path="res://mira/graphics/materials/M_NeonCyan.tres" id="1_cyan"]
+
+[sub_resource type="SphereMesh" id="1_particle_mesh"]
+radius = 0.04
+height = 0.08
+
+[sub_resource type="Gradient" id="1_color_gradient"]
+offsets = PackedFloat32Array(0, 0.2, 0.78, 1)
+colors = PackedColorArray(0.9373, 1, 0.9725, 0, 0.9373, 1, 0.9725, 0.86, 0.5608, 1, 0.8196, 0.36, 0.5608, 1, 0.8196, 0)
+
+[sub_resource type="GradientTexture1D" id="1_color_ramp"]
+gradient = SubResource("1_color_gradient")
+
+[sub_resource type="ParticleProcessMaterial" id="1_process"]
+direction = Vector3(0, 0, -1)
+spread = 12.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.5
+gravity = Vector3(0, 0, 0)
+damping_min = 2.2
+damping_max = 5.5
+scale_min = 0.45
+scale_max = 1.08
+color_ramp = SubResource("1_color_ramp")
+
+[node name="FX_BeamParticles" type="GPUParticles3D"]
+amount = 88
+lifetime = 0.34
+one_shot = false
+explosiveness = 0.0
+randomness = 0.35
+local_coords = false
+emitting = false
+draw_order = 1
+process_material = SubResource("1_process")
+draw_pass_1 = SubResource("1_particle_mesh")
+material_override = ExtResource("1_cyan")

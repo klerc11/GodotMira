@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://mira/scripts/graphics/hazard_blocker_module.gd" id="1_script"]
+
+[sub_resource type="BoxShape3D" id="1_shape"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="1_mesh"]
+size = Vector3(2, 2, 2)
+
+[node name="HazardBlockerModule" type="Node3D"]
+script = ExtResource("1_script")
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+shape = SubResource("1_shape")
+
+[node name="BlockerMesh" type="MeshInstance3D" parent="Body"]
+mesh = SubResource("1_mesh")

@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://mira/scripts/graphics/wall_module.gd" id="1_script"]
+
+[sub_resource type="BoxShape3D" id="1_shape"]
+size = Vector3(2, 4, 12)
+
+[sub_resource type="BoxMesh" id="1_wall_mesh"]
+size = Vector3(2, 4, 12)
+
+[sub_resource type="BoxMesh" id="2_rail_mesh"]
+size = Vector3(2, 0.4, 12)
+
+[node name="WallModule" type="Node3D"]
+script = ExtResource("1_script")
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Body"]
+shape = SubResource("1_shape")
+
+[node name="WallMesh" type="MeshInstance3D" parent="Body"]
+mesh = SubResource("1_wall_mesh")
+
+[node name="RailMesh" type="MeshInstance3D" parent="Body"]
+position = Vector3(0, -1.8, 0)
+mesh = SubResource("2_rail_mesh")

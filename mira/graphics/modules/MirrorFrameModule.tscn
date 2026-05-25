@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://mira/scripts/graphics/mirror_frame_module.gd" id="1_script"]
+
+[sub_resource type="BoxMesh" id="1_plate_mesh"]
+size = Vector3(3.4, 2, 0.06)
+
+[sub_resource type="BoxMesh" id="2_frame_h"]
+size = Vector3(3.8, 0.2, 0.14)
+
+[sub_resource type="BoxMesh" id="3_frame_v"]
+size = Vector3(0.2, 2, 0.14)
+
+[sub_resource type="BoxMesh" id="4_accent"]
+size = Vector3(2.4, 0.08, 0.12)
+
+[node name="MirrorFrameModule" type="Node3D"]
+script = ExtResource("1_script")
+
+[node name="Plate" type="MeshInstance3D" parent="."]
+mesh = SubResource("1_plate_mesh")
+
+[node name="FrameTop" type="MeshInstance3D" parent="."]
+position = Vector3(0, 1.1, 0)
+mesh = SubResource("2_frame_h")
+
+[node name="FrameBottom" type="MeshInstance3D" parent="."]
+position = Vector3(0, -1.1, 0)
+mesh = SubResource("2_frame_h")
+
+[node name="FrameLeft" type="MeshInstance3D" parent="."]
+position = Vector3(-1.8, 0, 0)
+mesh = SubResource("3_frame_v")
+
+[node name="FrameRight" type="MeshInstance3D" parent="."]
+position = Vector3(1.8, 0, 0)
+mesh = SubResource("3_frame_v")
+
+[node name="Accent" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0, 0.02)
+mesh = SubResource("4_accent")

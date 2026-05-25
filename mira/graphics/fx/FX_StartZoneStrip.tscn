@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Material" path="res://mira/graphics/materials/M_GlassEnergy.tres" id="1_glass"]
+[ext_resource type="Material" path="res://mira/graphics/materials/M_NeonCyan.tres" id="2_cyan"]
+
+[sub_resource type="BoxMesh" id="1_strip_mesh"]
+size = Vector3(12, 0.05, 10)
+
+[sub_resource type="BoxMesh" id="2_line_mesh"]
+size = Vector3(11.2, 0.03, 0.1)
+
+[node name="FX_StartZoneStrip" type="Node3D"]
+
+[node name="Strip" type="MeshInstance3D" parent="."]
+mesh = SubResource("1_strip_mesh")
+material_override = ExtResource("1_glass")
+
+[node name="LineFront" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.03, 4.7)
+mesh = SubResource("2_line_mesh")
+material_override = ExtResource("2_cyan")
+
+[node name="LineBack" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.03, -4.7)
+mesh = SubResource("2_line_mesh")
+material_override = ExtResource("2_cyan")
+
+[node name="LineMid" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.03, 0)
+mesh = SubResource("2_line_mesh")
+material_override = ExtResource("2_cyan")

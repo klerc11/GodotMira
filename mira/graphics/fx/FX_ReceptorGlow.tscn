@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Material" path="res://mira/graphics/materials/M_NeonAmber.tres" id="1_amber"]
+
+[sub_resource type="SphereMesh" id="1_core_mesh"]
+radius = 0.54
+height = 1.08
+
+[sub_resource type="CylinderMesh" id="2_halo_mesh"]
+top_radius = 1.1
+bottom_radius = 1.1
+height = 0.08
+
+[node name="FX_ReceptorGlow" type="Node3D"]
+
+[node name="Core" type="MeshInstance3D" parent="."]
+mesh = SubResource("1_core_mesh")
+material_override = ExtResource("1_amber")
+
+[node name="Halo" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.2, 0)
+mesh = SubResource("2_halo_mesh")
+material_override = ExtResource("1_amber")
+
+[node name="GlowLight" type="OmniLight3D" parent="."]
+light_color = Color(0.8392, 0.6431, 0.3529, 1)
+light_energy = 1.25
+omni_range = 9.0

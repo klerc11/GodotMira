@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dqqc3bsyq2mo4"]
+
+[ext_resource type="Script" uid="uid://cb1miobj3ss4v" path="res://scripts/procedural_world.gd" id="1_procworld"]
+
+[node name="ProceduralWorld" type="Node3D" unique_id=1461790224]
+script = ExtResource("1_procworld")

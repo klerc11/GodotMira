@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://mira/scripts/graphics/trim_module.gd" id="1_script"]
+
+[sub_resource type="BoxMesh" id="1_mesh"]
+size = Vector3(4, 0.06, 0.12)
+
+[node name="TrimModule" type="Node3D"]
+script = ExtResource("1_script")
+
+[node name="TrimMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("1_mesh")
