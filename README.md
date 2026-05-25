@@ -208,7 +208,97 @@ Use the fresh sandbox (`mira/scenes/fresh/fresh_movement_only.tscn`) for fast it
 
 ---
 
-## 9) Collaboration Rules for Future AIs
+## 9) Known-Good Entry Points (Start Here)
+
+When onboarding into this repo, start in this order:
+
+1. `mira/scenes/fresh/fresh_movement_only.tscn` (movement feel sandbox)
+2. `mira/scripts/fresh/fresh_player_controller.gd` (jump/dash/slide tuning)
+3. `mira/scenes/mira_game.tscn` (runtime game loop)
+4. `mira/scripts/mira_game.gd` (level load, pulse, HUD, input mapping)
+5. `mira/scripts/mira_levels.gd` + `mira/scripts/scene_level_spec.gd` (level definitions and scene bridge)
+
+---
+
+## 10) Definition of Done (Per Section / Milestone)
+
+A section is complete only when all are true:
+
+1. Feature behavior works in intended scene(s).
+2. Relevant smoke/regression checklist passes.
+3. Known limitations are documented.
+4. `README.md` is updated with behavior/control/workflow changes.
+5. A git commit includes code + README updates.
+6. Changes are pushed to `origin/main`.
+7. If uncertainty remains, it is explicitly noted with verification steps.
+
+---
+
+## 11) Movement Tuning Log Template
+
+When changing movement feel, append an entry to `CHANGELOG_AI.md` using this structure:
+
+```md
+## YYYY-MM-DD - Movement Pass Name
+- Scene: `res://mira/scenes/fresh/fresh_movement_only.tscn`
+- Goal: short statement
+- Parameters changed:
+  - `jump_velocity`: old -> new
+  - `gravity_force`: old -> new
+  - `dash_speed`: old -> new
+  - `slide_kick_speed`: old -> new
+- Why: short rationale
+- Result: what improved / what regressed
+- Next test: one concrete follow-up
+```
+
+---
+
+## 12) Branch + Commit Conventions
+
+Branch naming (recommended):
+
+- `feat/<area>-<short-purpose>`
+- `fix/<area>-<short-purpose>`
+- `docs/<scope>`
+
+Examples:
+
+- `feat/movement-jump-pass`
+- `fix/skybox-fresh-scene`
+- `docs/readme-handoff-update`
+
+Commit message style:
+
+- `<type>: <what changed and why>`
+
+Examples:
+
+- `feat: improve dash-to-slide carry consistency`
+- `fix: lock fresh scene camera to startup state`
+- `docs: update README with movement tuning workflow`
+
+---
+
+## 13) Regression / Smoke Checklist
+
+Run this checklist after movement or scene changes:
+
+1. Scene loads without parse errors:
+   - `res://mira/scenes/fresh/fresh_movement_only.tscn`
+   - `res://mira/scenes/mira_game.tscn`
+2. Mouse capture/release works (`Esc`, click recapture).
+3. Jump is reproducible and apex feels unchanged unless intentionally tuned.
+4. Dash triggers on press and cooldown feels consistent.
+5. Slide triggers reliably (`C`/`Alt`) and carry works after dash.
+6. Camera behavior is stable during sprint/slide.
+7. Reset (`R`) and fall reset work.
+8. If skybox changed: sky renders and is not black.
+9. README + changelog updated, committed, and pushed.
+
+---
+
+## 14) Collaboration Rules for Future AIs
 
 Before changing systems:
 
@@ -238,7 +328,7 @@ Do not leave README updates only in local working state after a section is compl
 
 ---
 
-## 10) Git / Cloud Sync Workflow
+## 15) Git / Cloud Sync Workflow
 
 This project is connected to:
 
@@ -261,7 +351,7 @@ Current `.gitignore` includes:
 
 ---
 
-## 11) Living Doc Policy
+## 16) Living Doc Policy
 
 This README is intended to stay current.  
 Any future assistant modifying gameplay, controls, scene layout, or workflow should update this file in the same change set.
