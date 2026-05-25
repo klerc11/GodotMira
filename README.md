@@ -221,6 +221,20 @@ Before changing systems:
 2. Prefer editing `mira/` production path over legacy root sandboxes.
 3. Keep changes scoped and test scene load after edits.
 4. Update this README when behavior, controls, architecture, or workflow changes.
+5. Always provide the user with recommended file paths/scenes/scripts to edit for the requested task.
+6. If any answer is uncertain, explicitly say what is uncertain, why, and how to verify it.
+7. Explain industry-standard implementation patterns when proposing architecture or system design.
+8. Ask relevant architecture questions before major builds (ownership boundaries, scene vs code, data model, and extensibility expectations).
+
+### 9.1 Mandatory README + Commit Cadence
+
+For every completed work section/milestone:
+
+1. Update `README.md` with what changed.
+2. Commit the README update in that same change set.
+3. Push so collaborators and future AIs are synced.
+
+Do not leave README updates only in local working state after a section is complete.
 
 ---
 
@@ -252,3 +266,10 @@ Current `.gitignore` includes:
 This README is intended to stay current.  
 Any future assistant modifying gameplay, controls, scene layout, or workflow should update this file in the same change set.
 
+Additional non-optional policy:
+
+- After each completed section/milestone, update and commit the README, then push.
+- Include clear recommended paths in guidance to the user.
+- Be explicit about uncertainty instead of presenting guesses as facts.
+- Use and explain industry-standard approaches for implementation choices.
+- Ask architecture questions when scope affects long-term structure.
