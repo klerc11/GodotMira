@@ -214,9 +214,10 @@ When onboarding into this repo, start in this order:
 
 1. `mira/scenes/fresh/fresh_movement_only.tscn` (movement feel sandbox)
 2. `mira/scripts/fresh/fresh_player_controller.gd` (jump/dash/slide tuning)
-3. `mira/scenes/mira_game.tscn` (runtime game loop)
-4. `mira/scripts/mira_game.gd` (level load, pulse, HUD, input mapping)
-5. `mira/scripts/mira_levels.gd` + `mira/scripts/scene_level_spec.gd` (level definitions and scene bridge)
+3. `mira/scripts/fresh/movement_metrics.gd` (formula helpers for jump distance recalculation)
+4. `mira/scenes/mira_game.tscn` (runtime game loop)
+5. `mira/scripts/mira_game.gd` (level load, pulse, HUD, input mapping)
+6. `mira/scripts/mira_levels.gd` + `mira/scripts/scene_level_spec.gd` (level definitions and scene bridge)
 
 ---
 

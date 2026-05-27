@@ -27,3 +27,17 @@ Use this log for:
   - DoD, tuning template, branch/commit conventions, and regression checklist added
 - Next target:
   - jump/dash/slide tuning pass with measured value tracking
+
+## 2026-05-26 - Movement Formula Helper Added
+
+- Added: `res://mira/scripts/fresh/movement_metrics.gd`
+- Purpose:
+  - recalculate jump/airtime/distance quickly when tuning values change
+  - provide reusable formulas for walk/sprint jump ranges and dash/slide extra distance
+- Includes:
+  - `jump_air_time(...)`
+  - `flat_gap_distance_constant_speed(...)`
+  - `flat_gap_distance_with_accel(...)`
+  - `dash_extra_distance(...)`
+  - `slide_extra_distance(...)`
+  - `profile_summary(...)`
